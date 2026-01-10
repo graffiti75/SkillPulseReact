@@ -1,0 +1,38 @@
+.confirm-dialog {
+  text-align: center;
+  padding: 20px;
+}
+
+.confirm-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  background: #FEE2E2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--danger);
+}
+
+.confirm-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.confirm-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.confirm-text {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}

@@ -1,0 +1,23 @@
+.alert {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-primary);
+  color: white;
+  padding: 14px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  z-index: 1001;
+  animation: alertSlide 0.3s ease-out;
+}
+
+.alert.error {
+  background: var(--danger);
+}
+
+.alert.success {
+  background: var(--success);
+}
