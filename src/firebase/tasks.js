@@ -14,7 +14,7 @@ import {
 import { db } from './config';
 
 const TASKS_COLLECTION = 'tasks';
-const ITEMS_LIMIT = 50;
+const ITEMS_LIMIT = 20;
 
 /**
  * Load tasks from Firestore with pagination
