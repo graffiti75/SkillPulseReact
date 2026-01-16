@@ -1,21 +1,13 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Header, FilterBar, FAB } from '../components/layout';
 import { TaskCard, TaskForm, DeleteConfirmation, EmptyState } from '../components/tasks';
 import { Loading, Alert } from '../components/common';
-import {
-	loadTasks,
-	addTask,
-	updateTask,
-	deleteTask,
-	extractSuggestions,
-	ITEMS_LIMIT,
-} from '../firebase';
+import { loadTasks, addTask, updateTask, deleteTask, ITEMS_LIMIT } from '../firebase';
 import './TaskScreen.css';
 
 const TaskScreen = ({ user, onLogout }) => {
 	const [tasks, setTasks] = useState([]);
 	const [allTasks, setAllTasks] = useState([]);
-	const [descriptions, setDescriptions] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [showLoadingSpinner, setShowLoadingSpinner] = useState(false);
 	const [canLoadMore, setCanLoadMore] = useState(false);
@@ -37,7 +29,6 @@ const TaskScreen = ({ user, onLogout }) => {
 			setTasks(result.tasks);
 			setLastTimestamp(result.lastTimestamp);
 			setCanLoadMore(result.canLoadMore);
-			setDescriptions(extractSuggestions(result.tasks));
 		} else {
 			setAlert({ message: result.error || 'Failed to load tasks', type: 'error' });
 		}
@@ -74,7 +65,6 @@ const TaskScreen = ({ user, onLogout }) => {
 			setTasks(combined);
 			setLastTimestamp(result.lastTimestamp);
 			setCanLoadMore(result.canLoadMore);
-			setDescriptions((prev) => [...new Set([...prev, ...extractSuggestions(newTasks)])]);
 
 			// 5. Wait for new tasks to be painted, THEN hide spinner
 			requestAnimationFrame(() => {
@@ -225,7 +215,7 @@ const TaskScreen = ({ user, onLogout }) => {
 				onClose={() => setShowAddForm(false)}
 				onSave={handleAddTask}
 				editTask={null}
-				suggestions={descriptions}
+				allTasks={allTasks}
 			/>
 
 			<TaskForm
@@ -233,7 +223,7 @@ const TaskScreen = ({ user, onLogout }) => {
 				onClose={() => setEditTaskData(null)}
 				onSave={handleEditTask}
 				editTask={editTaskData}
-				suggestions={descriptions}
+				allTasks={allTasks}
 			/>
 
 			<DeleteConfirmation
