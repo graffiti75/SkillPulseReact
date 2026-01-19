@@ -30,14 +30,6 @@ const TaskForm = ({ isOpen, onClose, onSave, editTask, allTasks = [] }) => {
 		(s) => s.toLowerCase() !== description.toLowerCase()
 	);
 
-	// const filteredSuggestions = suggestions
-	// 	.filter(
-	// 		(s) =>
-	// 			s.toLowerCase().includes(description.toLowerCase()) &&
-	// 			s.toLowerCase() !== description.toLowerCase()
-	// 	)
-	// 	.slice(0, 5);
-
 	const handleSave = async () => {
 		if (!description || !startTime || !endTime) return;
 		setIsLoading(true);

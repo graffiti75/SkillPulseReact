@@ -1,28 +1,28 @@
 .fab {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 8px 24px -4px rgba(245, 158, 11, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 100;
+	position: fixed;
+	bottom: 24px;
+	right: 24px;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+	color: white;
+	border: none;
+	cursor: pointer;
+	box-shadow: 0 8px 24px -4px var(--accent-shadow);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	z-index: 100;
 }
 
 .fab:hover {
-  transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 12px 28px -4px rgba(245, 158, 11, 0.6);
+	transform: scale(1.1) rotate(90deg);
+	box-shadow: 0 12px 28px -4px var(--accent-shadow);
 }
 
 .fab svg {
-  width: 28px;
-  height: 28px;
+	width: 28px;
+	height: 28px;
 }

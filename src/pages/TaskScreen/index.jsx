@@ -9,38 +9,40 @@ import { TaskModals } from './TaskModals';
 import './TaskScreen.css';
 
 const TaskScreen = ({ user, onLogout }) => {
-	const t = useTaskState();
-	const ui = useUIState();
-	const h = createTaskHandlers(t, ui);
+	const taskState = useTaskState();
+	const uiState = useUIState();
+	const handlers = createTaskHandlers(taskState, uiState);
 
 	useEffect(() => {
-		t.fetchTasks().then((r) => !r.success && ui.showAlert(r.error, 'error'));
+		taskState
+			.fetchTasks()
+			.then((result) => !result.success && uiState.showAlert(result.error, 'error'));
 	}, []);
 
 	return (
 		<div className="app-container">
 			<TaskHeader
 				user={user}
-				taskCount={t.allTasks.length}
-				filteredCount={t.tasks.length}
-				showFilter={ui.showFilter}
-				onToggleFilter={ui.toggleFilter}
+				taskCount={taskState.allTasks.length}
+				filteredCount={taskState.tasks.length}
+				showFilter={uiState.showFilter}
+				onToggleFilter={uiState.toggleFilter}
 				onLogout={onLogout}
-				filterDate={t.filterDate}
-				onFilterChange={t.filterByDate}
+				filterDate={taskState.filterDate}
+				onFilterChange={taskState.filterByDate}
 			/>
 			<TaskList
-				tasks={t.tasks}
-				isLoading={t.isLoading}
-				canLoadMore={t.canLoadMore}
-				filterDate={t.filterDate}
-				showLoadingSpinner={t.showLoadingSpinner}
-				onEdit={ui.openEditForm}
-				onDelete={ui.openDeleteDialog}
-				onLoadMore={h.handleLoadMore}
+				tasks={taskState.tasks}
+				isLoading={taskState.isLoading}
+				canLoadMore={taskState.canLoadMore}
+				filterDate={taskState.filterDate}
+				showLoadingSpinner={taskState.showLoadingSpinner}
+				onEdit={uiState.openEditForm}
+				onDelete={uiState.openDeleteDialog}
+				onLoadMore={handlers.handleLoadMore}
 			/>
-			<FAB onClick={ui.openAddForm} />
-			<TaskModals ui={ui} handlers={h} allTasks={t.allTasks} />
+			<FAB onClick={uiState.openAddForm} />
+			<TaskModals ui={uiState} handlers={handlers} allTasks={taskState.allTasks} />
 		</div>
 	);
 };

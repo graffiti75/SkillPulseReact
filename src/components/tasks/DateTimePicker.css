@@ -1,142 +1,148 @@
 .datetime-picker {
-  padding: 20px;
+	padding: 20px;
 }
 
 .datetime-tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
+	display: flex;
+	gap: 8px;
+	margin-bottom: 20px;
 }
 
 .datetime-tab {
-  flex: 1;
-  padding: 12px;
-  border: 2px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: white;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
+	flex: 1;
+	padding: 12px;
+	border: 2px solid var(--border);
+	border-radius: var(--radius-sm);
+	background: var(--bg-card);
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	color: var(--text-primary);
 }
 
 .datetime-tab.active {
-  border-color: var(--primary);
-  background: rgba(30, 64, 175, 0.05);
-  color: var(--primary);
+	border-color: var(--primary);
+	background: var(--primary-bg-light);
+	color: var(--primary);
 }
 
 .calendar {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
 }
 
 .calendar-nav {
-  display: flex;
-  gap: 8px;
+	display: flex;
+	gap: 8px;
 }
 
 .calendar-nav-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
+	width: 32px;
+	height: 32px;
+	border-radius: 6px;
+	border: 1px solid var(--border);
+	background: var(--bg-card);
+	color: var(--text-primary);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
 }
 
 .calendar-nav-btn:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+	border-color: var(--primary);
+	color: var(--primary);
 }
 
 .calendar-month {
-  font-weight: 600;
-  font-size: 16px;
+	font-weight: 600;
+	font-size: 16px;
+	color: var(--text-primary);
 }
 
 .calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 4px;
 }
 
 .calendar-day-header {
-  text-align: center;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
-  padding: 8px;
+	text-align: center;
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--text-muted);
+	padding: 8px;
 }
 
 .calendar-day {
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.15s ease;
+	aspect-ratio: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: all 0.15s ease;
+	color: var(--text-primary);
 }
 
 .calendar-day:hover:not(.empty):not(.selected) {
-  background: var(--bg-light);
+	background: var(--bg-light);
 }
 
 .calendar-day.selected {
-  background: var(--primary);
-  color: white;
-  font-weight: 600;
+	background: var(--primary);
+	color: white;
+	font-weight: 600;
 }
 
 .calendar-day.today {
-  border: 2px solid var(--primary);
+	border: 2px solid var(--primary);
 }
 
 .calendar-day.empty {
-  cursor: default;
+	cursor: default;
 }
 
 .calendar-day.other-month {
-  color: var(--text-muted);
+	color: var(--text-muted);
 }
 
 .time-picker {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 20px;
 }
 
 .time-input {
-  width: 80px;
-  padding: 16px;
-  font-size: 24px;
-  font-family: 'Space Mono', monospace;
-  text-align: center;
-  border: 2px solid var(--border);
-  border-radius: var(--radius-sm);
-  outline: none;
+	width: 80px;
+	padding: 16px;
+	font-size: 24px;
+	font-family: 'Space Mono', monospace;
+	text-align: center;
+	border: 2px solid var(--border);
+	border-radius: var(--radius-sm);
+	outline: none;
+	background: var(--bg-card);
+	color: var(--text-primary);
 }
 
 .time-input:focus {
-  border-color: var(--primary);
+	border-color: var(--primary);
 }
 
 .time-separator {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text-muted);
+	font-size: 24px;
+	font-weight: 700;
+	color: var(--text-muted);
 }

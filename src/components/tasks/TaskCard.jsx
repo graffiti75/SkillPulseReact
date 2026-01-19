@@ -1,4 +1,3 @@
-import React from 'react';
 import { Icons } from '../common';
 import { formatDateTime } from '../../utils/dateUtils';
 import './TaskCard.css';

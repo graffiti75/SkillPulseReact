@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { LoginScreen } from './components/auth';
 import { TaskScreen } from './pages';
 import { Alert, Loading } from './components/common';
@@ -34,15 +34,7 @@ function App() {
 
 	if (isLoading) {
 		return (
-			<div
-				style={{
-					minHeight: '100vh',
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
-					background: 'linear-gradient(135deg, #1E3A8A 0%, #1E40AF 50%, #3B82F6 100%)',
-				}}
-			>
+			<div className="loading-screen">
 				<Loading />
 			</div>
 		);

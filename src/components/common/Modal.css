@@ -1,7 +1,7 @@
 .modal-overlay {
 	position: fixed;
 	inset: 0;
-	background: rgba(15, 23, 42, 0.6);
+	background: var(--modal-overlay);
 	backdrop-filter: blur(4px);
 	display: flex;
 	align-items: center;
@@ -12,7 +12,7 @@
 }
 
 .modal {
-	background: white;
+	background: var(--bg-card);
 	border-radius: 20px;
 	width: 100%;
 	max-height: 90vh;

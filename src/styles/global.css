@@ -6,6 +6,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+* {
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
 
 body {
 	font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -34,12 +37,12 @@ body {
 .btn-primary {
 	background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
 	color: white;
-	box-shadow: 0 4px 12px -2px rgba(30, 64, 175, 0.4);
+	box-shadow: 0 4px 12px -2px var(--primary-shadow);
 }
 
 .btn-primary:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 6px 16px -2px rgba(30, 64, 175, 0.5);
+	box-shadow: 0 6px 16px -2px var(--primary-shadow);
 }
 
 .btn-primary:active {
@@ -54,7 +57,7 @@ body {
 
 .btn-secondary:hover {
 	border-color: var(--primary);
-	background: rgba(30, 64, 175, 0.05);
+	background: var(--primary-bg-light);
 }
 
 .btn-danger {
@@ -81,7 +84,7 @@ body {
 }
 
 .btn-icon:hover {
-	background: rgba(0, 0, 0, 0.05);
+	background: var(--hover-overlay);
 	color: var(--text-primary);
 }
 
@@ -119,7 +122,7 @@ body {
 
 .form-input:focus {
 	border-color: var(--primary);
-	background: white;
+	background: var(--bg-card);
 	box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
 }
 
@@ -146,6 +149,11 @@ body {
 	padding: 4px;
 	border-radius: 4px;
 	transition: all 0.2s ease;
+}
+
+.form-input-icon:hover {
+	color: var(--primary);
+	background: var(--primary-bg-light);
 }
 
 .form-input-icon:hover {
@@ -254,4 +262,17 @@ body {
 	border-top-color: var(--primary);
 	border-radius: 50%;
 	animation: spin 0.8s linear infinite;
+}
+
+.loading-screen {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(
+		135deg,
+		var(--primary-dark) 0%,
+		var(--primary) 50%,
+		var(--primary-light) 100%
+	);
 }

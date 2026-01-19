@@ -25,6 +25,9 @@ export const loadTasks = async (lastTimestamp = null) => {
 		};
 	} catch (error) {
 		console.error('Error loading tasks:', error);
-		return { success: false, error: getFirestoreErrorMessage(error) };
+		return {
+			success: false,
+			error: getFirestoreErrorMessage(error),
+		};
 	}
 };
