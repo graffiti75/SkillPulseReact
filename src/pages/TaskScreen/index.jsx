@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { FAB } from '../../components/layout';
-import { useTaskState } from './useTaskState';
-import { useUIState } from './useUIState';
+import { useUIControls } from './useUIControls';
+import { useTaskManager } from './useTaskManager';
 import { createTaskHandlers } from './taskHandlers';
 import { TaskHeader } from './TaskHeader';
 import { TaskList } from './TaskList';
@@ -9,40 +9,40 @@ import { TaskModals } from './TaskModals';
 import './TaskScreen.css';
 
 const TaskScreen = ({ user, onLogout }) => {
-	const taskState = useTaskState();
-	const uiState = useUIState();
-	const handlers = createTaskHandlers(taskState, uiState);
+	const uiControls = useUIControls();
+	const taskManager = useTaskManager();
+	const handlers = createTaskHandlers(uiControls, taskManager);
 
 	useEffect(() => {
-		taskState
+		uiControls
 			.fetchTasks()
-			.then((result) => !result.success && uiState.showAlert(result.error, 'error'));
+			.then((result) => !result.success && taskManager.showAlert(result.error, 'error'));
 	}, []);
 
 	return (
 		<div className="app-container">
 			<TaskHeader
 				user={user}
-				taskCount={taskState.allTasks.length}
-				filteredCount={taskState.tasks.length}
-				showFilter={uiState.showFilter}
-				onToggleFilter={uiState.toggleFilter}
+				taskCount={uiControls.allTasks.length}
+				filteredCount={uiControls.tasks.length}
+				showFilter={taskManager.showFilter}
+				onToggleFilter={taskManager.toggleFilter}
 				onLogout={onLogout}
-				filterDate={taskState.filterDate}
-				onFilterChange={taskState.filterByDate}
+				filterDate={uiControls.filterDate}
+				onFilterChange={uiControls.filterByDate}
 			/>
 			<TaskList
-				tasks={taskState.tasks}
-				isLoading={taskState.isLoading}
-				canLoadMore={taskState.canLoadMore}
-				filterDate={taskState.filterDate}
-				showLoadingSpinner={taskState.showLoadingSpinner}
-				onEdit={uiState.openEditForm}
-				onDelete={uiState.openDeleteDialog}
+				tasks={uiControls.tasks}
+				isLoading={uiControls.isLoading}
+				canLoadMore={uiControls.canLoadMore}
+				filterDate={uiControls.filterDate}
+				showLoadingSpinner={uiControls.showLoadingSpinner}
+				onEdit={taskManager.openEditForm}
+				onDelete={taskManager.openDeleteDialog}
 				onLoadMore={handlers.handleLoadMore}
 			/>
-			<FAB onClick={uiState.openAddForm} />
-			<TaskModals ui={uiState} handlers={handlers} allTasks={taskState.allTasks} />
+			<FAB onClick={taskManager.openAddForm} />
+			<TaskModals ui={taskManager} handlers={handlers} allTasks={uiControls.allTasks} />
 		</div>
 	);
 };

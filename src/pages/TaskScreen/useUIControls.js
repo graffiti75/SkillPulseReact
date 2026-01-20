@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { loadTasks, addTask, updateTask, deleteTask, extractSuggestions } from '../../firebase';
 
-export const useTaskState = () => {
+export const useUIControls = () => {
 	const [tasks, setTasks] = useState([]);
 	const [allTasks, setAllTasks] = useState([]);
 	const [descriptions, setDescriptions] = useState([]);

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useUIState = () => {
+export const useTaskManager = () => {
 	const [showFilter, setShowFilter] = useState(false);
 	const [showAddForm, setShowAddForm] = useState(false);
 	const [editTaskData, setEditTaskData] = useState(null);
