@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Icons } from '../common';
 import './DateTimePicker.css';
 

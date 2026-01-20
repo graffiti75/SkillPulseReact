@@ -1,3 +1,7 @@
+.modal-overlay .modal:has(.datetime-picker) {
+	max-width: 30%;
+}
+
 .datetime-picker {
 	padding: 20px;
 }
