@@ -1,0 +1,67 @@
+/* Form Styles */
+
+.form-group {
+	margin-bottom: 20px;
+}
+
+.form-label {
+	display: block;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--text-primary);
+	margin-bottom: 8px;
+}
+
+.form-input {
+	width: 100%;
+	padding: 14px 16px;
+	font-size: 15px;
+	font-family: inherit;
+	border: 2px solid var(--border);
+	border-radius: var(--radius-sm);
+	background: var(--bg-light);
+	color: var(--text-primary);
+	transition: all 0.2s ease;
+	outline: none;
+}
+
+.form-input:focus {
+	border-color: var(--primary);
+	background: var(--bg-card);
+	box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.1);
+}
+
+.form-input::placeholder {
+	color: var(--text-muted);
+}
+
+.form-textarea {
+	resize: vertical;
+	min-height: 100px;
+}
+
+.form-input-wrapper {
+	position: relative;
+}
+
+.form-input-icon {
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--text-muted);
+	cursor: pointer;
+	padding: 4px;
+	border-radius: 4px;
+	transition: all 0.2s ease;
+}
+
+.form-input-icon:hover {
+	color: var(--primary);
+	background: var(--primary-bg-light);
+}
+
+.form-input-icon:hover {
+	color: var(--primary);
+	background: rgba(30, 64, 175, 0.1);
+}

@@ -1,0 +1,10 @@
+/* Font Imports & Typography */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+body {
+	font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+	background: var(--bg-light);
+	color: var(--text-primary);
+	min-height: 100vh;
+}
