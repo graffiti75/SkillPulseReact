@@ -1,4 +1,4 @@
-import { Icons } from '../../common';
+import { Icons } from 'src/components/common';
 import { useDateTimePicker } from './useDateTimePicker';
 import './DateTimePicker.css';
 

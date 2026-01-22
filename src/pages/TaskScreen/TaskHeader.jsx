@@ -1,4 +1,4 @@
-import { Header, FilterBar } from '../../components/layout';
+import { Header, FilterBar } from 'src/components/layout';
 
 export const TaskHeader = ({
 	user,

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { login, signUp } from '../../../firebase';
+import { login, signUp } from 'src/firebase';
 import './LoginScreen.css';
 import LoginButtonGroup from './LoginButtonGroup';
 import LoginPasswordGroup from './LoginPasswordGroup';

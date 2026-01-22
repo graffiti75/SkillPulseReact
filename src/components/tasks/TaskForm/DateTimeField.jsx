@@ -1,5 +1,5 @@
-import { Icons } from '../../common';
-import { formatDateTime } from '../../../utils/dateUtils';
+import { Icons } from 'src/components/common';
+import { formatDateTime } from 'src/utils/dateUtils';
 
 export const DateTimeField = ({ label, value, onClick, placeholder }) => {
 	return (

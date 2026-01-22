@@ -1,4 +1,4 @@
-import { extractSuggestions } from '../../../firebase/tasks/taskSuggestions';
+import { extractSuggestions } from 'src/firebase/tasks/taskSuggestions';
 
 export const DescriptionField = ({
 	description,

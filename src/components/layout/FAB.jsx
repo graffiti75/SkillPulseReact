@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icons } from '../common';
+import { Icons } from 'src/components/common';
 import './FAB.css';
 
 const FAB = ({ onClick }) => {

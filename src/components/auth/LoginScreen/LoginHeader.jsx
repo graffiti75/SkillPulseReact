@@ -1,4 +1,4 @@
-import { Icons } from '../../common';
+import { Icons } from 'src/components/common';
 import './LoginScreen.css';
 
 const LoginHeader = ({ email, setEmail, error }) => {

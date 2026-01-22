@@ -1,6 +1,5 @@
-import { Icons } from '../common';
+import { Icons, Modal } from 'src/components/common';
 import './DeleteConfirmation.css';
-import { Modal } from '../common';
 
 const DeleteConfirmation = ({ isOpen, onClose, onConfirm, taskDescription }) => {
 	return (

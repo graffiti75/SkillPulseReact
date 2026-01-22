@@ -1,5 +1,5 @@
-import { TaskCard, EmptyState } from '../../components/tasks';
-import { Loading } from '../../components/common';
+import { TaskCard, EmptyState } from 'src/components/tasks';
+import { Loading } from 'src/components/common';
 
 export const TaskList = ({
 	tasks,

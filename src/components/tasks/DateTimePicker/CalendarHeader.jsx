@@ -1,4 +1,4 @@
-import { Icons } from '../../common';
+import { Icons } from 'src/components/common';
 import { MONTH_NAMES } from './dateTimeConstants';
 import './DateTimePicker.css';
 

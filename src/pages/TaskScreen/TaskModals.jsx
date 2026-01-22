@@ -1,5 +1,5 @@
-import { TaskForm, DeleteConfirmation } from '../../components/tasks';
-import { Alert } from '../../components/common';
+import { TaskForm, DeleteConfirmation } from 'src/components/tasks';
+import { Alert } from 'src/components/common';
 
 export const TaskModals = ({ ui, handlers, allTasks }) => (
 	<>

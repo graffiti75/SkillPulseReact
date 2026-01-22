@@ -1,5 +1,5 @@
-import { Modal } from '../../common';
-import DateTimePicker from '../DateTimePicker/index';
+import { Modal } from 'src/components/common';
+import DateTimePicker from 'src/components/tasks/DateTimePicker/index';
 import { useTaskFormState } from './useTaskFormState';
 import { TaskFormFields } from './TaskFormFields';
 import './TaskForm.css';
