@@ -20,5 +20,5 @@ export const generateTaskId = async (startTime) => {
 		return max;
 	}, 0);
 
-	return `${datePrefix}_${maxNumber + 1}`;
+	return `${datePrefix}_${String(maxNumber + 1).padStart(2, '0')}`;
 };

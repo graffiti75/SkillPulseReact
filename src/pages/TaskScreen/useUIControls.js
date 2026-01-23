@@ -8,7 +8,7 @@ export const useUIControls = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [showLoadingSpinner, setShowLoadingSpinner] = useState(false);
 	const [canLoadMore, setCanLoadMore] = useState(false);
-	const [lastTimestamp, setLastTimestamp] = useState(null);
+	const [lastId, setLastId] = useState(null);
 	const [filterDate, setFilterDate] = useState('');
 
 	const fetchTasks = useCallback(async () => {
@@ -16,9 +16,26 @@ export const useUIControls = () => {
 		const result = await loadTasks(null);
 		setIsLoading(false);
 		if (result.success) {
+			// START LOGGING
+			console.log('=== FIREBASE TASKS ===');
+			console.log('Total tasks:', result.tasks.length);
+			result.tasks.forEach((task, index) => {
+				console.log(`Task ${index + 1}:`, {
+					id: task.id,
+					description: task.description,
+					startTime: task.startTime,
+					endTime: task.endTime,
+					createdAt: task.createdAt,
+					userId: task.userId,
+					fullTask: task,
+				});
+			});
+			console.log('=== END TASKS ===');
+			// END LOGGING
+
 			setAllTasks(result.tasks);
 			setTasks(result.tasks);
-			setLastTimestamp(result.lastTimestamp);
+			setLastId(result.lastId);
 			setCanLoadMore(result.canLoadMore);
 			setDescriptions(extractSuggestions(result.tasks));
 		}
@@ -28,17 +45,39 @@ export const useUIControls = () => {
 	const loadMore = useCallback(async () => {
 		if (showLoadingSpinner || !canLoadMore) return { success: false };
 		setShowLoadingSpinner(true);
-		const result = await loadTasks(lastTimestamp);
+
+		console.log('=== LOAD MORE TASKS ===');
+		console.log('Last timestamp:', lastId);
+		console.log('Can load more:', canLoadMore);
+
+		const result = await loadTasks(lastId);
 		if (result.success) {
+			console.log('New tasks loaded:', result.tasks.length);
+			result.tasks.forEach((task, index) => {
+				console.log(`New Task ${index + 1}:`, {
+					id: task.id,
+					description: task.description,
+					startTime: task.startTime,
+					endTime: task.endTime,
+					createdAt: task.createdAt,
+					userId: task.userId,
+				});
+			});
+			console.log('New lastTimestamp:', result.lastId);
+			console.log('Can load more:', result.canLoadMore);
+
 			setAllTasks((p) => [...p, ...result.tasks]);
 			setTasks((p) => [...p, ...result.tasks]);
-			setLastTimestamp(result.lastTimestamp);
+			setLastId(result.lastId);
 			setCanLoadMore(result.canLoadMore);
 			setDescriptions((p) => [...new Set([...p, ...extractSuggestions(result.tasks)])]);
+		} else {
+			console.log('Load more failed:', result.error);
 		}
+		console.log('=== END LOAD MORE ===');
 		setShowLoadingSpinner(false);
 		return result;
-	}, [showLoadingSpinner, canLoadMore, lastTimestamp]);
+	}, [showLoadingSpinner, canLoadMore, lastId]);
 
 	const filterByDate = useCallback(
 		(date) => {
