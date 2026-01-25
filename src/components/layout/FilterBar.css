@@ -1,6 +1,5 @@
 .filter-bar {
-	position: sticky;
-	top: 76px;
+	position: relative;
 	z-index: 99;
 	background: var(--bg-card);
 	margin: 0 24px 16px;

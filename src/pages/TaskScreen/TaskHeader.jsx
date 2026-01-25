@@ -1,4 +1,5 @@
 import { Header, FilterBar } from 'src/components/layout';
+import './TaskHeader.css';
 
 export const TaskHeader = ({
 	user,
@@ -11,7 +12,7 @@ export const TaskHeader = ({
 	filterDate,
 	onFilterChange,
 }) => (
-	<>
+	<div className="task-header-sticky">
 		<Header
 			user={user?.email?.split('@')[0] || 'User'}
 			taskCount={taskCount}
@@ -28,5 +29,5 @@ export const TaskHeader = ({
 				onClear={() => onFilterChange('')}
 			/>
 		)}
-	</>
+	</div>
 );

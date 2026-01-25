@@ -1,6 +1,5 @@
 .header {
-	position: sticky;
-	top: 0;
+	position: relative;
 	z-index: 100;
 	padding: 20px 24px;
 	display: flex;
