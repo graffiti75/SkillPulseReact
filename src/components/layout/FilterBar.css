@@ -1,6 +1,5 @@
 .filter-bar {
 	position: relative;
-	z-index: 99;
 	background: var(--bg-card);
 	margin: 0 24px 16px;
 	border-radius: var(--radius);
