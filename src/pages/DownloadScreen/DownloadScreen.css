@@ -1,0 +1,32 @@
+@import './MonthYearPicker.css';
+@import './FormatSelector.css';
+@import './DownloadButton.css';
+
+.download-screen {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+/* Section Styling */
+.download-section {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.section-title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--text-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.section-title svg {
+	width: 18px;
+	height: 18px;
+}

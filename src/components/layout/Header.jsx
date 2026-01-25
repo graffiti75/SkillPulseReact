@@ -1,8 +1,16 @@
-import { Icons } from '../common';
+import { Icons } from 'src/components/common';
 import './Header.css';
-import { ThemeToggle } from '../common/ThemeToggle';
+import { ThemeToggle } from 'src/components/common/ThemeToggle';
 
-const Header = ({ user, taskCount, filteredCount, showFilter, onToggleFilter, onLogout }) => {
+const Header = ({
+	user,
+	taskCount,
+	filteredCount,
+	showFilter,
+	onToggleFilter,
+	onLogout,
+	onDownload,
+}) => {
 	return (
 		<header className="header">
 			<div className="header-left">
@@ -16,6 +24,10 @@ const Header = ({ user, taskCount, filteredCount, showFilter, onToggleFilter, on
 						{filteredCount}/{taskCount} tasks
 					</span>
 				)}
+
+				<button className="header-btn" onClick={onDownload} title="Download tasks">
+					<Icons.Download />
+				</button>
 				<button
 					className="header-btn"
 					onClick={onToggleFilter}

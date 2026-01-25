@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FAB } from 'src/components/layout';
 import { useUIControls } from './useUIControls';
 import { useTaskManager } from './useTaskManager';
@@ -6,12 +6,14 @@ import { createTaskHandlers } from './taskHandlers';
 import { TaskHeader } from './TaskHeader';
 import { TaskList } from './TaskList';
 import { TaskModals } from './TaskModals';
+import { DownloadScreen } from 'src/pages';
 import './TaskScreen.css';
 
 const TaskScreen = ({ user, onLogout }) => {
 	const uiControls = useUIControls();
 	const taskManager = useTaskManager();
 	const handlers = createTaskHandlers(uiControls, taskManager);
+	const [showDownload, setShowDownload] = useState(false);
 
 	useEffect(() => {
 		uiControls
@@ -28,6 +30,7 @@ const TaskScreen = ({ user, onLogout }) => {
 				showFilter={taskManager.showFilter}
 				onToggleFilter={taskManager.toggleFilter}
 				onLogout={onLogout}
+				onDownload={() => setShowDownload(true)}
 				filterDate={uiControls.filterDate}
 				onFilterChange={uiControls.filterByDate}
 			/>
@@ -43,6 +46,7 @@ const TaskScreen = ({ user, onLogout }) => {
 			/>
 			<FAB onClick={taskManager.openAddForm} />
 			<TaskModals ui={taskManager} handlers={handlers} allTasks={uiControls.allTasks} />
+			<DownloadScreen isOpen={showDownload} onClose={() => setShowDownload(false)} />
 		</div>
 	);
 };

@@ -7,6 +7,7 @@ export const TaskHeader = ({
 	showFilter,
 	onToggleFilter,
 	onLogout,
+	onDownload,
 	filterDate,
 	onFilterChange,
 }) => (
@@ -18,6 +19,7 @@ export const TaskHeader = ({
 			showFilter={showFilter}
 			onToggleFilter={onToggleFilter}
 			onLogout={onLogout}
+			onDownload={onDownload}
 		/>
 		{showFilter && (
 			<FilterBar
