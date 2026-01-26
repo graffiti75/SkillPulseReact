@@ -1,0 +1,45 @@
+/* Menu Item Button */
+.menu-item {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 12px 24px;
+	background: transparent;
+	border: none;
+	color: var(--text-primary);
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	width: 100%;
+	text-align: left;
+}
+
+.menu-item:hover {
+	background: var(--bg-light);
+	color: var(--primary);
+}
+
+/* Icon inside menu item */
+.menu-item svg {
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
+}
+
+/* Text label inside menu item */
+.menu-item span {
+	flex: 1;
+}
+
+/* Logout Button - Danger state */
+.menu-logout {
+	color: var(--danger);
+	margin-top: auto;
+	border-top: 1px solid var(--border);
+	border-bottom: 1px solid var(--border);
+}
+
+.menu-logout:hover {
+	background: rgba(239, 68, 68, 0.1);
+}

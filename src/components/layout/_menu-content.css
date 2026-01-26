@@ -1,0 +1,30 @@
+/* Menu Content Container */
+.menu-content {
+	flex: 1;
+	padding: 16px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+/* Menu Section - Groups of items */
+.menu-section {
+	padding: 8px 0;
+}
+
+/* Section Title */
+.menu-section-title {
+	display: block;
+	padding: 12px 24px;
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: var(--text-muted);
+	letter-spacing: 0.5px;
+}
+
+/* Menu Divider - Visual separator */
+.menu-divider {
+	height: 1px;
+	background: var(--border);
+}

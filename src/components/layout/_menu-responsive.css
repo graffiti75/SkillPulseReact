@@ -1,0 +1,22 @@
+/* Mobile Responsive Adjustments */
+@media (max-width: 640px) {
+	/* Reduce menu width on mobile */
+	.menu {
+		width: 240px;
+	}
+
+	/* Adjust header padding */
+	.menu-header {
+		padding: 20px 16px;
+	}
+
+	/* Adjust section title padding */
+	.menu-section-title {
+		padding: 12px 16px;
+	}
+
+	/* Adjust menu item padding */
+	.menu-item {
+		padding: 12px 16px;
+	}
+}
