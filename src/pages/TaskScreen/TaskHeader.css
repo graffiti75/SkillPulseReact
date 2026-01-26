@@ -2,4 +2,10 @@
 .task-header-sticky {
 	position: relative;
 	z-index: 50;
+	margin-top: 76px;
+}
+
+/* When filter is open, add extra margin for the fixed filter bar */
+.task-header-with-filter {
+	margin-top: 152px;
 }

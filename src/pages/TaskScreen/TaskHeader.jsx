@@ -12,7 +12,7 @@ export const TaskHeader = ({
 	filterDate,
 	onFilterChange,
 }) => (
-	<div className="task-header-sticky">
+	<div className={`task-header-sticky ${showFilter ? 'task-header-with-filter' : ''}`}>
 		<Header
 			user={user?.email?.split('@')[0] || 'User'}
 			taskCount={taskCount}
