@@ -1,6 +1,6 @@
 .filter-bar {
 	position: relative;
-	z-index: 50;
+	z-index: 10;
 	background: var(--bg-card);
 	margin: 0 24px 16px;
 	border-radius: var(--radius);
@@ -78,6 +78,7 @@
 @media (max-width: 640px) {
 	.filter-bar {
 		margin: 0 16px 12px;
+		0 16px 12px 
 		flex-wrap: wrap;
 	}
 }

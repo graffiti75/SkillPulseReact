@@ -1,6 +1,5 @@
 /* Sticky wrapper for Header + FilterBar */
 .task-header-sticky {
-	position: sticky;
-	top: 0;
-	z-index: 100;
+	position: relative;
+	z-index: 50;
 }
