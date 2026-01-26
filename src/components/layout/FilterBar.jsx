@@ -1,8 +1,16 @@
 import React from 'react';
 import { Icons } from '../common';
+import { useMenu } from 'src/contexts/MenuContext';
 import './FilterBar.css';
 
 const FilterBar = ({ filterDate, onFilterChange, onClear, onToggleFilter }) => {
+	const { setIsMenuOpen } = useMenu();
+	const handleCloseFilter = () => {
+		// Close both filter and menu
+		setIsMenuOpen(false);
+		onToggleFilter();
+	};
+
 	return (
 		<div className="filter-bar">
 			<input
@@ -23,7 +31,7 @@ const FilterBar = ({ filterDate, onFilterChange, onClear, onToggleFilter }) => {
 			</button>
 			<button
 				className="filter-btn filter-btn-close"
-				onClick={onToggleFilter}
+				onClick={handleCloseFilter}
 				title="Close filter"
 			>
 				<Icons.X />

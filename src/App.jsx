@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { LoginScreen } from './components/auth';
 import { TaskScreen } from './pages';
 import { Alert, Loading } from './components/common';
+import { MenuProvider } from './contexts/MenuContext';
 import { onAuthChange, logout } from './firebase';
 import './styles/global.css';
 
@@ -41,7 +42,7 @@ function App() {
 	}
 
 	return (
-		<>
+		<MenuProvider>
 			{user ? (
 				<TaskScreen user={user} onLogout={handleLogout} />
 			) : (
@@ -50,7 +51,7 @@ function App() {
 			{alert && (
 				<Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)} />
 			)}
-		</>
+		</MenuProvider>
 	);
 }
 

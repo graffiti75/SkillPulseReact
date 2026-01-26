@@ -1,18 +1,18 @@
-import { useState } from 'react';
 import { Icons } from 'src/components/common';
 import { ThemeToggle } from 'src/components/common/ThemeToggle';
+import { useMenu } from 'src/contexts/MenuContext';
 import './Menu.css';
 
 const Menu = ({ user, showFilter, onToggleFilter, onLogout, onDownload }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const { isMenuOpen, setIsMenuOpen } = useMenu();
 
 	const handleMenuToggle = () => {
-		setIsOpen(!isOpen);
+		setIsMenuOpen(!isMenuOpen);
 	};
 
 	const handleMenuItemClick = (callback) => {
 		callback();
-		setIsOpen(false);
+		setIsMenuOpen(false);
 	};
 
 	return (
@@ -21,14 +21,14 @@ const Menu = ({ user, showFilter, onToggleFilter, onLogout, onDownload }) => {
 				<Icons.Menu />
 			</button>
 
-			{isOpen && <div className="menu-overlay" onClick={() => setIsOpen(false)} />}
+			{isMenuOpen && <div className="menu-overlay" onClick={() => setIsMenuOpen(false)} />}
 
-			<div className={`menu ${isOpen ? 'menu-open' : ''}`}>
+			<div className={`menu ${isMenuOpen ? 'menu-open' : ''}`}>
 				<div className="menu-header">
 					<h2 className="menu-user">{user}</h2>
 					<button
 						className="menu-close"
-						onClick={() => setIsOpen(false)}
+						onClick={() => setIsMenuOpen(false)}
 						title="Close menu"
 					>
 						<Icons.X />
