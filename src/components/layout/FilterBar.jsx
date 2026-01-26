@@ -2,7 +2,7 @@ import React from 'react';
 import { Icons } from '../common';
 import './FilterBar.css';
 
-const FilterBar = ({ filterDate, onFilterChange, onClear }) => {
+const FilterBar = ({ filterDate, onFilterChange, onClear, onToggleFilter }) => {
 	return (
 		<div className="filter-bar">
 			<input
@@ -20,6 +20,13 @@ const FilterBar = ({ filterDate, onFilterChange, onClear }) => {
 			>
 				<Icons.X />
 				Clear
+			</button>
+			<button
+				className="filter-btn filter-btn-close"
+				onClick={onToggleFilter}
+				title="Close filter"
+			>
+				<Icons.X />
 			</button>
 		</div>
 	);

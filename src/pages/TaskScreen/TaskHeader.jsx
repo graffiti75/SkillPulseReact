@@ -27,6 +27,7 @@ export const TaskHeader = ({
 				filterDate={filterDate}
 				onFilterChange={onFilterChange}
 				onClear={() => onFilterChange('')}
+				onToggleFilter={onToggleFilter}
 			/>
 		)}
 	</div>

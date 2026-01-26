@@ -1,5 +1,6 @@
 .filter-bar {
 	position: relative;
+	z-index: 50;
 	background: var(--bg-card);
 	margin: 0 24px 16px;
 	border-radius: var(--radius);
@@ -55,6 +56,18 @@
 .filter-btn-clear:hover {
 	background: var(--text-muted);
 	color: white;
+}
+
+.filter-btn-close {
+	background: transparent;
+	color: var(--text-muted);
+	padding: 8px;
+	border-radius: 6px;
+}
+
+.filter-btn-close:hover {
+	background: var(--bg-light);
+	color: var(--danger);
 }
 
 .filter-btn svg {
