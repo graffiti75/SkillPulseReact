@@ -63,18 +63,15 @@ const Menu = ({ user, showFilter, onToggleFilter, onLogout, onDownload }) => {
 							{showFilter ? <Icons.X /> : <Icons.Filter />}
 							<span>{showFilter ? 'Hide Filter' : 'Show Filter'}</span>
 						</button>
+						<button
+							className="menu-item menu-logout"
+							onClick={() => handleMenuItemClick(onLogout)}
+							title="Logout"
+						>
+							<Icons.Logout />
+							<span>Logout</span>
+						</button>
 					</div>
-
-					<div className="menu-divider" />
-
-					<button
-						className="menu-item menu-logout"
-						onClick={() => handleMenuItemClick(onLogout)}
-						title="Logout"
-					>
-						<Icons.Logout />
-						<span>Logout</span>
-					</button>
 				</div>
 			</div>
 		</div>
