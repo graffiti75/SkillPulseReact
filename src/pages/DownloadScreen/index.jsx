@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Modal, Alert } from 'src/components/common';
 import { Icons } from 'src/components/common/Icons';
+import { useAuth } from 'src/contexts/AuthContext';
 import { downloadTasksByMonth } from 'src/firebase/tasks';
 import { MonthYearPicker } from './MonthYearPicker';
 import { FormatSelector } from './FormatSelector';
 import './DownloadScreen.css';
 
 const DownloadScreen = ({ isOpen, onClose }) => {
+	const { user } = useAuth();
 	const currentDate = new Date();
 	const [selectedYear, setSelectedYear] = useState(currentDate.getFullYear());
 	const [selectedMonth, setSelectedMonth] = useState(currentDate.getMonth() + 1);
@@ -20,9 +22,22 @@ const DownloadScreen = ({ isOpen, onClose }) => {
 	};
 
 	const handleDownload = async () => {
+		console.log('DOWNLOAD:', {
+			year: selectedYear,
+			month: selectedMonth,
+			userEmail: user.email,
+		});
+
+		// Guard: Don't download if user is not logged in
+		if (!user?.email) {
+			showAlert('User not authenticated', 'error');
+			return;
+		}
+
 		setIsLoading(true);
 
 		const result = await downloadTasksByMonth(
+			user.email,
 			selectedYear,
 			selectedMonth,
 			format,

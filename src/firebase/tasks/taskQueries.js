@@ -69,6 +69,8 @@ export const loadTasks = async (userEmail, lastId = null) => {
  * @returns {Promise<{ success: boolean, tasks?: Array, error?: string, totalCount?: number }>}
  */
 export const loadTasksByMonth = async (userEmail, year, month) => {
+	console.log('QUERY:', { userEmail, year, month, monthType: typeof month });
+
 	try {
 		if (!userEmail) {
 			return {

@@ -66,7 +66,6 @@ export const useUIControls = () => {
 		console.log('Last timestamp:', lastId);
 		console.log('Can load more:', canLoadMore);
 
-		const userId = user.uid;
 		const result = await loadTasks(user.email, lastId);
 		if (result.success) {
 			console.log('New tasks loaded:', result.tasks.length);

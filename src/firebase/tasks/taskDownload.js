@@ -4,13 +4,18 @@ import { tasksToCSV, tasksToFormattedCSV } from './csvConverter';
 
 /**
  * Download tasks for a specific month as JSON
+ * @param {string} userEmail - The current user's email
  * @param {number} year - The year (e.g., 2024)
  * @param {number} month - The month (1-12)
  * @returns {Promise<{ success: boolean, error?: string, filename?: string, taskCount?: number }>}
  */
-export const downloadTasksByMonthAsJSON = async (year, month) => {
+export const downloadTasksByMonthAsJSON = async (userEmail, year, month) => {
 	try {
-		const result = await loadTasksByMonth(year, month);
+		if (!userEmail) {
+			return { success: false, error: 'User email is required' };
+		}
+
+		const result = await loadTasksByMonth(userEmail, year, month);
 
 		if (!result.success) {
 			return { success: false, error: result.error };
@@ -44,14 +49,19 @@ export const downloadTasksByMonthAsJSON = async (year, month) => {
 
 /**
  * Download tasks for a specific month as CSV
+ * @param {string} userEmail - The current user's email
  * @param {number} year - The year (e.g., 2024)
  * @param {number} month - The month (1-12)
  * @param {boolean} formatted - Whether to use formatted (readable) dates
  * @returns {Promise<{ success: boolean, error?: string, filename?: string, taskCount?: number }>}
  */
-export const downloadTasksByMonthAsCSV = async (year, month, formatted = true) => {
+export const downloadTasksByMonthAsCSV = async (userEmail, year, month, formatted = true) => {
 	try {
-		const result = await loadTasksByMonth(year, month);
+		if (!userEmail) {
+			return { success: false, error: 'User email is required' };
+		}
+
+		const result = await loadTasksByMonth(userEmail, year, month);
 
 		if (!result.success) {
 			return { success: false, error: result.error };
@@ -78,34 +88,55 @@ export const downloadTasksByMonthAsCSV = async (year, month, formatted = true) =
 
 /**
  * Download tasks for the current month as JSON
+ * @param {string} userEmail - The current user's email
  * @returns {Promise<{ success: boolean, error?: string, filename?: string, taskCount?: number }>}
  */
-export const downloadCurrentMonthTasksAsJSON = async () => {
+export const downloadCurrentMonthTasksAsJSON = async (userEmail) => {
+	if (!userEmail) {
+		return { success: false, error: 'User email is required' };
+	}
+
 	const now = new Date();
-	return downloadTasksByMonthAsJSON(now.getFullYear(), now.getMonth() + 1);
+	return downloadTasksByMonthAsJSON(userEmail, now.getFullYear(), now.getMonth() + 1);
 };
 
 /**
  * Download tasks for the current month as CSV
+ * @param {string} userEmail - The current user's email
  * @param {boolean} formatted - Whether to use formatted (readable) dates
  * @returns {Promise<{ success: boolean, error?: string, filename?: string, taskCount?: number }>}
  */
-export const downloadCurrentMonthTasksAsCSV = async (formatted = true) => {
+export const downloadCurrentMonthTasksAsCSV = async (userEmail, formatted = true) => {
+	if (!userEmail) {
+		return { success: false, error: 'User email is required' };
+	}
+
 	const now = new Date();
-	return downloadTasksByMonthAsCSV(now.getFullYear(), now.getMonth() + 1, formatted);
+	return downloadTasksByMonthAsCSV(userEmail, now.getFullYear(), now.getMonth() + 1, formatted);
 };
 
 /**
  * Download tasks for a specific month with format selection
+ * @param {string} userEmail - The current user's email
  * @param {number} year - The year (e.g., 2024)
  * @param {number} month - The month (1-12)
  * @param {'json' | 'csv'} format - Download format
  * @param {boolean} formattedDates - Whether to use formatted dates (CSV only)
  * @returns {Promise<{ success: boolean, error?: string, filename?: string, taskCount?: number }>}
  */
-export const downloadTasksByMonth = async (year, month, format = 'json', formattedDates = true) => {
-	if (format === 'csv') {
-		return downloadTasksByMonthAsCSV(year, month, formattedDates);
+export const downloadTasksByMonth = async (
+	userEmail,
+	year,
+	month,
+	format = 'json',
+	formattedDates = true
+) => {
+	if (!userEmail) {
+		return { success: false, error: 'User email is required' };
 	}
-	return downloadTasksByMonthAsJSON(year, month);
+
+	if (format === 'csv') {
+		return downloadTasksByMonthAsCSV(userEmail, year, month, formattedDates);
+	}
+	return downloadTasksByMonthAsJSON(userEmail, year, month);
 };
