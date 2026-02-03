@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const createTask = (description, startTime, endTime) => ({
+export const createTask = (userId, description, startTime, endTime) => ({
 	id: uuidv4(),
+	userId,
 	description,
 	timestamp: new Date().toISOString(),
 	startTime,

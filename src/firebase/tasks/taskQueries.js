@@ -19,10 +19,24 @@ const getMonthDateRange = (year, month) => {
 	};
 };
 
-export const loadTasks = async (lastId = null) => {
+/**
+ * Load tasks for current user with pagination
+ * @param {string} userEmail - The current user's email
+ * @param {string} lastId - The last task ID for pagination
+ * @returns {Promise<{ success: boolean, tasks?: Array, lastId?: string, canLoadMore?: boolean, error?: string }>}
+ */
+export const loadTasks = async (userEmail, lastId = null) => {
 	try {
+		if (!userEmail) {
+			return {
+				success: false,
+				error: 'User email is required',
+			};
+		}
+
 		const q = query(
 			collection(db, TASKS_COLLECTION),
+			where('userId', '==', userEmail),
 			orderBy('id', 'desc'),
 			...(lastId ? [startAfter(lastId)] : []),
 			limit(ITEMS_LIMIT)
@@ -49,12 +63,20 @@ export const loadTasks = async (lastId = null) => {
 
 /**
  * Load all tasks for a specific month
+ * @param {string} userEmail - The current user's email
  * @param {number} year - The year (e.g., 2024)
  * @param {number} month - The month (1-12, where 1 = January)
  * @returns {Promise<{ success: boolean, tasks?: Array, error?: string, totalCount?: number }>}
  */
-export const loadTasksByMonth = async (year, month) => {
+export const loadTasksByMonth = async (userEmail, year, month) => {
 	try {
+		if (!userEmail) {
+			return {
+				success: false,
+				error: 'User email is required',
+			};
+		}
+
 		// Validate inputs
 		if (!year || !month || month < 1 || month > 12) {
 			return {
@@ -68,6 +90,7 @@ export const loadTasksByMonth = async (year, month) => {
 		// Query tasks where startTime falls within the month range
 		const q = query(
 			collection(db, TASKS_COLLECTION),
+			where('userId', '==', userEmail),
 			where('startTime', '>=', startDate),
 			where('startTime', '<=', endDate),
 			orderBy('startTime', 'asc')
@@ -93,10 +116,11 @@ export const loadTasksByMonth = async (year, month) => {
 };
 
 /**
- * Load all tasks for the current month
+ * Load all tasks for the current month for current user
+ * @param {string} userEmail - The current user's email
  * @returns {Promise<{ success: boolean, tasks?: Array, error?: string, totalCount?: number }>}
  */
-export const loadTasksCurrentMonth = async () => {
+export const loadTasksCurrentMonth = async (userEmail) => {
 	const now = new Date();
-	return loadTasksByMonth(now.getFullYear(), now.getMonth() + 1);
+	return loadTasksByMonth(userEmail, now.getFullYear(), now.getMonth() + 1);
 };

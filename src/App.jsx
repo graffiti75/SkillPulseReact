@@ -3,6 +3,7 @@ import { LoginScreen } from './components/auth';
 import { TaskScreen } from './pages';
 import { Alert, Loading } from './components/common';
 import { MenuProvider } from './contexts/MenuContext';
+import { AuthProvider } from './contexts/AuthContext';
 import { onAuthChange, logout } from './firebase';
 import './styles/global.css';
 
@@ -42,16 +43,22 @@ function App() {
 	}
 
 	return (
-		<MenuProvider>
-			{user ? (
-				<TaskScreen user={user} onLogout={handleLogout} />
-			) : (
-				<LoginScreen onLoginSuccess={handleLoginSuccess} />
-			)}
-			{alert && (
-				<Alert message={alert.message} type={alert.type} onClose={() => setAlert(null)} />
-			)}
-		</MenuProvider>
+		<AuthProvider user={user} isLoading={isLoading}>
+			<MenuProvider>
+				{user ? (
+					<TaskScreen user={user} onLogout={handleLogout} />
+				) : (
+					<LoginScreen onLoginSuccess={handleLoginSuccess} />
+				)}
+				{alert && (
+					<Alert
+						message={alert.message}
+						type={alert.type}
+						onClose={() => setAlert(null)}
+					/>
+				)}
+			</MenuProvider>
+		</AuthProvider>
 	);
 }
 
