@@ -2,6 +2,16 @@
 
 A full-featured task management application.
 
+## Preview
+
+### App running on Google Chrome
+
+![App running on Google Chrome](https://raw.githubusercontent.com/graffiti75/SkillPulseReact/refs/heads/master/media/Screen%20Recording%202026-02-04%20at%2017.10.28.gif)
+
+### App running on Mobile device (Pixel 8a)
+
+![App running on Mobile device Pixel 8a](https://raw.githubusercontent.com/graffiti75/SkillPulseReact/refs/heads/master/media/Screen%20Recording%202026-02-04%20at%2017.21.19.gif)
+
 ## 📱 About
 
 SkillPulse is a production-ready task management application that allows users to create, edit, and manage tasks with advanced features like date/time scheduling, filtering, and data export. The app includes Firebase authentication and Firestore database integration for persistent data storage.
