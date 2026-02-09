@@ -6,15 +6,19 @@ A full-featured task management application.
 
 ### App running on Google Chrome
 
-![App running on Google Chrome](https://raw.githubusercontent.com/graffiti75/SkillPulseReact/refs/heads/master/media/Screen%20Recording%202026-02-04%20at%2017.10.28.gif)
+[![App running on Google Chrome](https://raw.githubusercontent.com/graffiti75/SkillPulseReact/refs/heads/master/media/Screen%20Recording%202026-02-04%20at%2017.10.28.gif)](https://www.youtube.com/watch?v=fxq453CgS_U)
 
 ### App running on Mobile device (Pixel 8a)
 
-![App running on Mobile device Pixel 8a](https://raw.githubusercontent.com/graffiti75/SkillPulseReact/refs/heads/master/media/Screen%20Recording%202026-02-04%20at%2017.21.19.gif)
+[![App running on Mobile device Pixel 8a](https://raw.githubusercontent.com/graffiti75/SkillPulseReact/refs/heads/master/media/Screen%20Recording%202026-02-04%20at%2017.21.19.gif)](https://www.youtube.com/shorts/dzLkmQjQZQM)
 
 ## Android
 
 This app also was developed in Android. Please chech the Android implementation [here](https://github.com/graffiti75/SkillPulse).
+
+## IOS
+
+This app also was developed in iOS. Please chech the iOS implementation [here](https://github.com/graffiti75/SkillPulseIOS).
 
 ## 📱 About
 
